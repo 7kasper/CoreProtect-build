@@ -1384,27 +1384,8 @@ public class Util extends Queue {
     }
 
     public static String getBranch() {
-        String branch = "";
-        try {
-            InputStreamReader reader = new InputStreamReader(CoreProtect.getInstance().getClass().getResourceAsStream("/plugin.yml"));
-            branch = YamlConfiguration.loadConfiguration(reader).getString("branch");
-            reader.close();
-
-            if (branch == null || branch.equals("${project.branch}")) {
-                branch = "";
-            }
-            if (branch.startsWith("-")) {
-                branch = branch.substring(1);
-            }
-            if (branch.length() > 0) {
-                branch = "-" + branch;
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return branch;
+    
+        return "master";
     }
 
     public static boolean newVersion(Integer[] oldVersion, Integer[] currentVersion) {
