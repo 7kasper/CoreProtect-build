@@ -36,7 +36,7 @@ jobs:
         run: ls -la target  # Adjust this path if needed
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: target/*.jar  # Update this path as needed
