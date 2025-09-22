@@ -47,7 +47,7 @@ public class ConfigHandler extends Queue {
     public static final String COMMUNITY_EDITION = "Community Edition";
     public static final String JAVA_VERSION = "11.0";
     public static final String MINECRAFT_VERSION = "1.16";
-    public static final String LATEST_VERSION = "1.21";
+    public static final String LATEST_VERSION = "1.21.8";
     public static String path = "plugins/CoreProtect/";
     public static String sqlite = "database.db";
     public static String host = "127.0.0.1";
@@ -136,7 +136,7 @@ public class ConfigHandler extends Queue {
     public static ConcurrentHashMap<String, String> language = new ConcurrentHashMap<>();
     public static List<String> databaseTables = new ArrayList<>();
 
-    private static void checkPlayers(Connection connection) {
+    public static void checkPlayers(Connection connection) {
         ConfigHandler.playerIdCache.clear();
         ConfigHandler.playerIdCacheReversed.clear();
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
@@ -265,7 +265,7 @@ public class ConfigHandler extends Queue {
             ConfigHandler.hikariDataSource = new HikariDataSource(config);
         }
 
-        Database.createDatabaseTables(ConfigHandler.prefix, null, Config.getGlobal().MYSQL, false);
+        Database.createDatabaseTables(ConfigHandler.prefix, false, null, Config.getGlobal().MYSQL, false);
     }
 
     public static void loadTypes(Statement statement) {
